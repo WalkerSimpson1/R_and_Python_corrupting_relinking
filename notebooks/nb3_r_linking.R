@@ -1,3 +1,5 @@
+#Section 1: Setup and loading -----
+
 library(fastLink)
 library(arrow)
 library(dplyr)
@@ -51,6 +53,8 @@ mutate(
     date_of_decision = as.numeric(date_of_decision)
 )
 
+#Section 2: Testing fastLink on Uttarakhand -----
+
 table(clean_trimmed$state_name)
 dfA_test <- corrupted_trimmed |> filter(state_name == "Uttarakhand")
 dfB_test <- clean_trimmed |> filter(state_name == "Uttarakhand")
@@ -92,6 +96,8 @@ precision_test
 
 recall_test <- sum(test_checked$ddl_case_id.x == test_checked$ddl_case_id.y) / nrow(dfA_test)
 recall_test
+
+#Section 3: Final loop and evaluation ------
 
 states <- unique(clean_trimmed$state_name)
 
